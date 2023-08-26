@@ -10,7 +10,7 @@ mongoose.connect('mongodb+srv://OMH-G:MongoOmh@testingcluster.ztxfjgz.mongodb.ne
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
-// const db = mongoose.connection;
+const db = mongoose.connection;
 
 // db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.get('/',(req,res)=>{
