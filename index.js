@@ -12,10 +12,10 @@ mongoose.connect('mongodb+srv://OMH-G:MongoOmh@testingcluster.ztxfjgz.mongodb.ne
 });
 const db = mongoose.connection;
 
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.get('/',(req,res)=>{
-    
-    res.send(db);
+
+    res.send("Hello");
 })
 // // Define a schema for the uploaded files
 // const fileSchema = new mongoose.Schema({
