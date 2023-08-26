@@ -25,19 +25,19 @@ const File = mongoose.model('File', fileSchema);
 
 // // Configure multer for file uploads
 const storage = multer.diskStorage({
-        destination: (req, file, cb) => {
-                cb(null, 'uploads'); // Set the folder where files will be saved
-            },
-            filename: (req, file, cb) => {
-                    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-                }
-            });
-            
-            app.get('/',(req,res)=>{
-            
-                res.send("Hello");
-            })
-// const upload = multer({ storage });
+    destination: (req, file, cb) => {
+        cb(null, 'uploads'); // Set the folder where files will be saved
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ storage });
+app.get('/', (req, res) => {
+
+    res.send("Hello");
+})
 
 // // Handle file upload
 // app.post('/upload', upload.single('file'), async (req, res) => {
@@ -64,4 +64,4 @@ const storage = multer.diskStorage({
 //     console.log(`Server listening at http://localhost:${port}`);
 // });
 
-module.exports=app
+module.exports = app
