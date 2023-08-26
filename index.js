@@ -34,32 +34,32 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+
+// // Handle file upload
+app.post('/upload', upload.single('file'), async (req, res) => {
+        if (req.file) {
+                const newFile = new File({
+                        filename: req.file.fieldname,
+                        originalName: req.file.originalname,
+                        filePath: req.file.path,
+                        uploadDate: new Date(),
+                    });
+            
+                    try {
+                            await newFile.save();
+                            res.status(200).send('File uploaded and saved to MongoDB.');
+                        } catch (error) {
+                                res.status(500).send('Error saving file to MongoDB.');
+                            }
+                        } else {
+                                res.status(400).send('No file uploaded.');
+                            }
+                        });
+                        
 app.get('/', (req, res) => {
 
     res.send("Hello");
 })
-
-// // Handle file upload
-// app.post('/upload', upload.single('file'), async (req, res) => {
-//     if (req.file) {
-//         const newFile = new File({
-//             filename: req.file.fieldname,
-//             originalName: req.file.originalname,
-//             filePath: req.file.path,
-//             uploadDate: new Date(),
-//         });
-
-//         try {
-//             await newFile.save();
-//             res.status(200).send('File uploaded and saved to MongoDB.');
-//         } catch (error) {
-//             res.status(500).send('Error saving file to MongoDB.');
-//         }
-//     } else {
-//         res.status(400).send('No file uploaded.');
-//     }
-// });
-
 // app.listen(port, () => {
 //     console.log(`Server listening at http://localhost:${port}`);
 // });
