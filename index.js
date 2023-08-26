@@ -13,19 +13,19 @@ mongoose.connect('mongodb+srv://OMH-G:MongoOmh@testingcluster.ztxfjgz.mongodb.ne
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// // Define a schema for the uploaded files
+const fileSchema = new mongoose.Schema({
+    filename: String,
+    originalName: String,
+    filePath: String, // Store the path where the file is saved
+    uploadDate: Date,
+});
+
+const File = mongoose.model('File', fileSchema);
 app.get('/',(req,res)=>{
 
     res.send("Hello");
 })
-// // Define a schema for the uploaded files
-// const fileSchema = new mongoose.Schema({
-//     filename: String,
-//     originalName: String,
-//     filePath: String, // Store the path where the file is saved
-//     uploadDate: Date,
-// });
-
-// const File = mongoose.model('File', fileSchema);
 
 // // Configure multer for file uploads
 // const storage = multer.diskStorage({
