@@ -22,21 +22,21 @@ const fileSchema = new mongoose.Schema({
 });
 
 const File = mongoose.model('File', fileSchema);
-app.get('/',(req,res)=>{
-
-    res.send("Hello");
-})
 
 // // Configure multer for file uploads
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, 'uploads'); // Set the folder where files will be saved
-//     },
-//     filename: (req, file, cb) => {
-//         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-//     }
-// });
-
+const storage = multer.diskStorage({
+        destination: (req, file, cb) => {
+                cb(null, 'uploads'); // Set the folder where files will be saved
+            },
+            filename: (req, file, cb) => {
+                    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+                }
+            });
+            
+            app.get('/',(req,res)=>{
+            
+                res.send("Hello");
+            })
 // const upload = multer({ storage });
 
 // // Handle file upload
