@@ -60,8 +60,8 @@ app.get('/', (req, res) => {
 
     res.send("Hello");
 })
-// app.listen(port, () => {
-//     console.log(`Server listening at http://localhost:${port}`);
-// });
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
+});
 
 module.exports = app
