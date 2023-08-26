@@ -26,7 +26,8 @@ const File = mongoose.model('File', fileSchema);
 // // Configure multer for file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads'); // Set the folder where files will be saved
+        upload_path=path.join(process.cwd(), 'uploads');
+        cb(null, upload_path); // Set the folder where files will be saved
     },
     filename: (req, file, cb) => {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
