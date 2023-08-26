@@ -14,7 +14,7 @@ const db = mongoose.connection;
 
 // db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.get('/',(req,res)=>{
-    res.send(db);
+    res.send("lskd");
 })
 // // Define a schema for the uploaded files
 // const fileSchema = new mongoose.Schema({
