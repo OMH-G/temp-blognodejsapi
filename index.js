@@ -6,13 +6,13 @@ const path = require('path');
 const app = express();
 const port = 8000;
 // // Connect to MongoDB
-mongoose.connect('mongodb+srv://OMH-G:MongoOmh@testingcluster.ztxfjgz.mongodb.net/starter', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
-const db = mongoose.connection;
+// mongoose.connect('mongodb+srv://OMH-G:MongoOmh@testingcluster.ztxfjgz.mongodb.net/starter', {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// });
+// const db = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.get('/',(req,res)=>{
     res.send("Hello world");
 })
